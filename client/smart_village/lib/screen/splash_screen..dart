@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     // Initialize the AnimationController
     _controller = AnimationController(
-      duration: const Duration(seconds: 2),
+      duration: const Duration(seconds: 1),
       vsync: this,
       lowerBound: 0.8, // The minimum value of the animation
       upperBound: 1, // The maximum value of the animation

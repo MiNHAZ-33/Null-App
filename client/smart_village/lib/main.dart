@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
       ],
       child: const MaterialApp(
         title: 'স্মার্ট ভিলেজ',
+        debugShowCheckedModeBanner: false,
         // theme: ThemeData(
         //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         //   useMaterial3: true,
