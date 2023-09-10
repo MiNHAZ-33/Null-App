@@ -2,36 +2,50 @@
 
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+// import 'package:http/http.dart' as http;
+
+import '../model/weather_model_web.dart';
 
 class WeatherProvider extends ChangeNotifier {
   double lat = 24.2299;
   double lon = 89.7122;
   static const String weatherApi = 'http://localhost:5124/api/Weather';
+  static const String apiKey = '289de7bc1d5a4f35961141011230909';
+
+  WeatherModel _weatherModel = WeatherModel();
 
   Weather _weather = Weather(
     tempC: 0.0,
     humidity: 0.0,
     condition: '',
   );
-  Weather get weather => _weather;
+
+  WeatherModel get weather => _weatherModel;
 
   Future<void> updateWeather() async {
+    String url =
+        "https://api.weatherapi.com/v1/current.json?key=$apiKey&q=$lat,$lon&aqi=yes";
+
+    final dio = Dio();
+
     try {
-      final response =
-          await http.get(Uri.parse('$weatherApi?lat=${lat}&${lon}'));
+      // var response = await http.get(Uri.parse(url));
+      var response = await dio.get(url);
       if (response.statusCode == 200) {
-        Weather weather = Weather.fromJson(response.body);
-        _weather = weather;
-        print(weather.toString());
+        Map<String, dynamic> json = jsonDecode(response.data);
+        WeatherModel weatherModel = WeatherModel.fromJson(json);
+        _weatherModel = weatherModel;
+        print(weatherModel.toString());
         notifyListeners();
       } else {
-        print('Request failed with status: ${response.statusCode}.');
+        throw ("No data found");
       }
     } catch (e) {
-      print(e);
+      throw e.toString();
     }
+    notifyListeners();
   }
 }
 

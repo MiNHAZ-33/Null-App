@@ -39,7 +39,7 @@ dependencies:
   dots_indicator:
   http:
   flutter_carousel_widget:
-  google_fonts:
+  dio:
 
 dev_dependencies:
   flutter_test:

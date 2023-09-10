@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:smart_village/provider/weather_provider.dart';
 
 import 'provider/landing_provider.dart';
 import 'screen/splash_screen..dart';
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => LandingProvider()),
+        ChangeNotifierProvider(create: (_) => WeatherProvider()),
       ],
       child: const MaterialApp(
         title: 'স্মার্ট ভিলেজ',

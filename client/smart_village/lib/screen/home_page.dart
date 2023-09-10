@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:smart_village/constant/colors.dart';
+import 'package:smart_village/screen/desease_detection_page.dart';
 import 'package:smart_village/screen/widgets/agriculture_card.dart';
 import 'package:smart_village/screen/widgets/drawer.dart';
 import 'package:smart_village/screen/widgets/educational_card.dart';
 import 'package:smart_village/screen/widgets/health_card.dart';
+
+import 'online_class_page.dart';
+import 'widgets/market_place.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -25,6 +29,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.chat_bubble_outline_outlined),
+      ),
       drawer: const CustomDrawer(),
       appBar: AppBar(
         backgroundColor: primaryColor,
@@ -160,7 +168,13 @@ class HomePage extends StatelessWidget {
               style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 10),
-            const AgricultureCard(
+            AgricultureCard(
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const DiseaseDetectionPage(),
+                ),
+              ),
               title: "রোগ নির্ণয়",
               subtitle: 'আর্টিফিসিয়াল ইন্টেলিজেন্সের মাধ্যমে রোগ নির্ণয়',
             ),
@@ -180,7 +194,15 @@ class HomePage extends StatelessWidget {
               style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 10),
-            const EducationalCard(
+            EducationalCard(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const OnlineClassPage(),
+                    ),
+                  );
+                },
                 title: 'অনলাইন ক্লাস',
                 subtitle: 'অভিজ্ঞ শিক্ষকের মাধ্যমে অনলাইনে পাঠদান'),
             const SizedBox(height: 3),
@@ -210,6 +232,13 @@ class HomePage extends StatelessWidget {
                 title: 'স্মার্ট ডিভাইস',
                 subtitle:
                     'মুমূর্ষ রোগীকে স্মার্ট ডিভাইসের মাধ্যমে মনিটর করা যাতে তাৎক্ষনিক কন্ডিশনের আপডেট পাওয়া যায়'),
+            const SizedBox(height: 10),
+            const Text(
+              'অনলাইন মার্কেটপ্লেস',
+              style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
+            const MarketPlace(),
           ],
         ),
       ),

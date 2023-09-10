@@ -51,15 +51,19 @@ class LandingPage extends StatelessWidget {
               child: TextButton(
                 onPressed: () {
                   // controller.navigateToAuth();
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => HomePage()));
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HomePage(),
+                    ),
+                  );
                 },
                 child: const Text(
                   "স্কিপ",
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: darkSecondaryColor),
+                      color: backgroundColor),
                 ),
               )),
           Positioned(

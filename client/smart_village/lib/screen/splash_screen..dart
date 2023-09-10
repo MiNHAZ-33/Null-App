@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:smart_village/constant/colors.dart';
 import 'package:smart_village/screen/landing_page.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -22,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     // Initialize the AnimationController
     _controller = AnimationController(
-      duration: const Duration(seconds: 1),
+      duration: const Duration(seconds: 3),
       vsync: this,
       lowerBound: 0.8, // The minimum value of the animation
       upperBound: 1, // The maximum value of the animation
@@ -33,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen>
       curve: Curves.easeInOut,
     );
     Timer(const Duration(seconds: 1), () {
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => LandingPage()),
       );
@@ -42,8 +43,17 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    // Dispose the animation controller
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // backgroundColor: primaryColor,
       body: Stack(
         children: [
           // The image widget that fills the entire screen
