@@ -32,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen>
       parent: _controller,
       curve: Curves.easeInOut,
     );
-    Timer(const Duration(seconds: 5), () {
+    Timer(const Duration(seconds: 1), () {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => LandingPage()),

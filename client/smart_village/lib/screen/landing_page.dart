@@ -22,7 +22,6 @@ class LandingPage extends StatelessWidget {
           PageView(
             controller: pageController,
             onPageChanged: (value) {
-              print(value);
               value < 4
                   ? landingProvider.changeIndex(
                       value,
