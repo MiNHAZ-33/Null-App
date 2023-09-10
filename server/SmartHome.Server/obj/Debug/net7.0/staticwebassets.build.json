@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "tuE7oLql/xDGL6vrRGm5vFeIrPOY2Aa722wlhK519D8=",
+  "Source": "SmartHome.Server",
+  "BasePath": "_content/SmartHome.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
