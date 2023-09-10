@@ -39,6 +39,7 @@ dependencies:
   dots_indicator:
   http:
   flutter_carousel_widget:
+  google_fonts:
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +65,11 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
+    - assets/weather/cloudy.jpg
+    - assets/weather/night.jpg
+    - assets/weather/rainy.jpg
+    - assets/weather/sunny.jpg
+    - assets/weather/thunder.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
