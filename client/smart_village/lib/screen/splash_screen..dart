@@ -11,13 +11,31 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends State<SplashScreen>
+    with SingleTickerProviderStateMixin {
+  // Create an AnimationController
+  late AnimationController _controller;
+  // Create an Animation
+  late Animation<double> _animation;
+
   @override
   void initState() {
-    Timer(const Duration(seconds: 3), () {
+    // Initialize the AnimationController
+    _controller = AnimationController(
+      duration: const Duration(seconds: 2),
+      vsync: this,
+      lowerBound: 0.8, // The minimum value of the animation
+      upperBound: 1, // The maximum value of the animation
+    )..repeat(reverse: true); // Repeat the animation in reverse mode
+    // Initialize the Animation with a curve
+    _animation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeInOut,
+    );
+    Timer(const Duration(seconds: 5), () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const LandingPage()),
+        MaterialPageRoute(builder: (context) => LandingPage()),
       );
     });
     super.initState();
@@ -30,7 +48,7 @@ class _SplashScreenState extends State<SplashScreen> {
         children: [
           // The image widget that fills the entire screen
           ImageFiltered(
-            imageFilter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+            imageFilter: ImageFilter.blur(sigmaX: 15.0, sigmaY: 15.0),
             child: Image.asset(
               "assets/splash.png",
               fit: BoxFit.cover,
@@ -39,14 +57,18 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
           ),
           // The text widget that is aligned in the center
-          const Align(
+          Align(
             alignment: Alignment.center,
-            child: Text(
-              "স্মার্ট ভিলেজ",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
+            child: ScaleTransition(
+              scale: _animation,
+              child: const Text(
+                "স্মার্ট ভিলেজ",
+                style: TextStyle(
+                  color: Color.fromARGB(255, 18, 1, 62),
+                  // color: primaryColor,
+                  fontSize: 55,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),
